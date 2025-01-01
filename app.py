@@ -546,7 +546,10 @@ def logout():
         active_users.pop(user_id, None)
         socketio.emit("active_users", active_users)
     return redirect(url_for("login"))        
-  
+
+@app.route("/back", methods=["POST"])
+def back():
+    return redirect(url_for("home"))  
         
 if __name__ == "__main__": 
     socketio.run(app, host='0.0.0.0', port=5000, debug=True)
